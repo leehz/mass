@@ -1,11 +1,15 @@
 import java.io.File;
-
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
 
 public class TreeView{
     static int levels = 0;
     static int fls = 0;
     static int dirs = 0 - 1;
     static boolean last = false;
+    static PrintStream ps = null;
 
     public static void main(String[] args){
         if(args.length != 1){
@@ -20,7 +24,20 @@ public class TreeView{
             return;
         }
 
+        //  write the output to a file: tree.out
+        File outfile = new File("./tree.out");
+        if(outfile.exists()){
+            outfile.delete();
+        }
+        try{
+        outfile.createNewFile();
+        } catch(IOException e) { e.printStackTrace(); }
+        try{
+        ps = new PrintStream(new FileOutputStream(outfile));
+        } catch(FileNotFoundException e){ e.printStackTrace();}
+
         System.out.println(file.getName());
+        //ps.append(file.getAbsolutePath() + "\n");   donot  add the root dir
         index_file(file, levels);
         System.out.println("");
         System.out.println("");
@@ -40,6 +57,7 @@ public class TreeView{
         if(file.isFile()){
             fls++;
             System.out.println("└──" + file.getName());
+            ps.append(file.getAbsolutePath() + file. + "\n");
             return level;
         }
         if(file.isDirectory()){
@@ -48,7 +66,7 @@ public class TreeView{
             if(level != 0){
                 System.out.println("├──" + file.getName());
             }
-            if(files.length > 0 && level >= levels){
+            if(files.length > 0 && level >= levels ){
                 levels = level + 1;
             }
 
