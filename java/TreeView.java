@@ -15,7 +15,7 @@ public class TreeView{
             return;
         }
 
-        System.out.println(file.getName() +" ");
+        System.out.println("- " + file.getName());
         index_file(file);
 
     }
@@ -24,7 +24,7 @@ public class TreeView{
     public static int index_file(File file){
         int rtn = 0;
         if(file.isFile()){
-            System.out.println("\t|" + file.getName());
+            System.out.println("  |- " + file.getName());
             return rtn;
         }
         if(file.isDirectory()){
