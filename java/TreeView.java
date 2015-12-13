@@ -13,7 +13,7 @@ public class TreeView{
 
     public static void main(String[] args){
         if(args.length != 1){
-            System.out.println("Usage: TreeView [Dir] " + args.length + args[0]);
+            System.out.println("Usage: TreeView [Dir] " + args.length);
             System.out.println(" @CopyRight 2015 Hz Lee");
             return;
         }
@@ -57,7 +57,7 @@ public class TreeView{
         if(file.isFile()){
             fls++;
             System.out.println("└──" + file.getName());
-            ps.append(file.getAbsolutePath() + file. + "\n");
+            ps.append(file.getAbsolutePath() + file + "\n");
             return level;
         }
         if(file.isDirectory()){
