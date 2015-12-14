@@ -9,6 +9,7 @@
 static int files = 0;;
 static int dirs = 0 - 1;
 static int levels = 0;
+static FILE *out;
 
 int index_file(char *path, int level);
 int is_dir(char *path);
@@ -18,6 +19,11 @@ int main(int argc, char **argv){
     if(argc != 2) {
         printf("usage: %s [dir]\n", argv[0]);
         return 0;
+    }
+    if((out = fopen("tree.out", "w+")) == NULL)
+    {
+        perror("fopen:");
+        exit(EXIT_FAILURE);
     }
     index_file(argv[1], levels);
 
@@ -38,7 +44,8 @@ int index_file(char* path, int level){
         printf("├──\x1b[0;31m%s\x1b[0m\n", strrchr(path, '/')+1);
     else
         printf("%s\n", path);
-
+    fputs(path, out);
+    fputc('\n', out);
     if(is_dir(path)){
         dirs++;
         if((dir = opendir(path)) == NULL){
