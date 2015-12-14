@@ -12,7 +12,7 @@ static int levels = 0;
 
 int index_file(char *path, int level);
 int is_dir(char *path);
-char *_strcat(char *tmp, char *append);
+//char *_strcat(char *tmp, char *append);
 
 int main(int argc, char **argv){
     if(argc != 2) {
@@ -75,8 +75,10 @@ int is_dir(char* path){
     return -1;
 }
 
+/*
 char *_strcat(char *tmp, char *append){
     char *buff = strcpy(buff, tmp);
     buff =  strcat(buff, append);
     return buff;
 }
+*/
