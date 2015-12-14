@@ -39,6 +39,7 @@ public class TreeView{
         System.out.println(file.getName());
         //ps.append(file.getAbsolutePath() + "\n");   donot  add the root dir
         index_file(file, levels);
+        ps.close();
         System.out.println("");
         System.out.println("");
         System.out.println("");
