@@ -59,7 +59,12 @@ int index_file(char* path, int level){
             char *tmp = malloc(sizeof(char)*1024);
             memset(tmp, '0', 1024);
             strcpy(tmp, path);
-            if(strcmp("/\0", rindex(tmp, '/')))
+            if(strcmp(tmp, ".") && strcmp(tmp, ".."))
+                {
+                if(strcmp("/\0", rindex(tmp, '/')))
+                    strcat(tmp, "/");
+                }
+            else
                 strcat(tmp, "/");
             strcat(tmp, dirent->d_name);
             index_file(tmp, level + 1);
