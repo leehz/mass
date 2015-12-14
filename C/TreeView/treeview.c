@@ -26,7 +26,7 @@ int main(int argc, char **argv){
         exit(EXIT_FAILURE);
     }
     index_file(argv[1], levels);
-
+    fclose(out);
     printf("\n\n");
     printf("\x1b[4;34;42m  files: %d \x1b[0m", files);
     printf("\x1b[4;35;43m  dirs: %d \x1b[0m", dirs);
@@ -76,6 +76,7 @@ int index_file(char* path, int level){
         files++;
         return level;
     }
+    closedir(dir);
 }
 
 int is_dir(char* path){
