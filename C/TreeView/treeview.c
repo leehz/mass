@@ -54,6 +54,7 @@ int index_file(char* path, int level){
             strcat(tmp, "/");
             strcat(tmp, dirent->d_name);
             index_file(tmp, level + 1);
+            free(tmp);
             levels = level + 1;
             }
         }
