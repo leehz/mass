@@ -9,7 +9,9 @@ public class SyncGet {
     OkHttpClient client = new OkHttpClient();
 
     Request request = new Request.Builder()
-            .url("http://www.baidu.com")
+            .url("http://ipinfo.io")
+			.header("User-Agent", "Mem")
+			.addHeader("Accept", "application/json; q=0.5")
             .build();
 
     Response response = client.newCall(request).execute();
