@@ -1,6 +1,5 @@
 *.class
 *.test
-test
 tree.out
 readdir_test
 strcat_test
